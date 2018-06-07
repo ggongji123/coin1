@@ -1,0 +1,28 @@
+1. 프로젝트명 : 회원관리 프로그램
+
+2. 패키지 분류 및 역할
+ - mms.member.db : 데이터베이스 관련 처리에 필요한 공통적인 기능을 관리하는 클래스를 담는 패키지
+ 	JdbcUtils.java
+ - mms.member.dto(vo) : 객체단위로 데이터를 저장하고 전송하기 위한 클래스를 담는 패키지
+   한명의 회원에 대한 정보를 관리하는 클래스
+   MemberDTO.java
+ - mms.member.ui : main() 메서드를 담고 있는 클래스를 관리하는 패키지
+ 	ui => user interface
+ 	MainProcessor.java
+ - mms.member.controller : 특정 메뉴가 선택되었을 때 요청을 직접 받아서 처리하는 클래스를 
+ 							정의하는 패키지로 프로그램 전체 요청에 대한 흐름을 제어한다.
+ 	FrontController.java
+ - mms.member.util : 콘솔로부터 사용자가 입력한 정보를 읽어 들이거나 콘솔로 필요한 메시지를 
+ 					출력하는 역할을 담당하는 클래스를 정의하는 패키지
+ 	ConsoleUtils.java
+ - mms.member.action : 사용자의 요청 하나하나를 처리하는 Action Class를 정의하는 패키지
+ 	Action.java - interface
+ 	회원등록, 회원검색 등 기능을 처리하는 클래스를 관리한다.
+ 	다형성적인 표현
+ 		
+ - mms.member.svc : 실제 DB와 연걸해서 동작은 구현하는 비즈니스 로직에 해당하는 클래스를 
+ 					정의하는 패키지
+ 	각 기능을 처리하는 Action class 별 Service class를 구현한다.
+ 	
+ - mms.member.dao : 데이터베이스의 SQL 구문을 전송하는 역할을 수행하는 클래스를 관리하는
+ 					패키지
