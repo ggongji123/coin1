@@ -1,0 +1,236 @@
+﻿package teamProject;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class Gza_transactionP extends JPanel {
+	Date today = new Date();
+	SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd/hh:mm");
+	String today1 = date.format(today);
+	ArrayList<String> list = new ArrayList<String>();
+
+	Gza_transactionP(Gza_Frame gf) {
+		setBackground(Color.LIGHT_GRAY);
+        setSize(800, 600);
+        setLayout(null);
+  
+
+		int y = 50;
+
+		JLabel lb0 = new JLabel("주문시간");
+		add(lb0);
+		lb0.setLocation(50, y);
+		lb0.setSize(100, 30);
+		lb0.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		JLabel lb1 = new JLabel("구분");
+		add(lb1);
+		lb1.setLocation(210, y);
+		lb1.setSize(50, 30);
+		lb1.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		JLabel lb2 = new JLabel("체결가격");
+		add(lb2);
+		lb2.setLocation(330, y);
+		lb2.setSize(100, 30);
+		lb2.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		JLabel lb3 = new JLabel("체결수량");
+		add(lb3);
+		lb3.setLocation(480, y);
+		lb3.setSize(100, 30);
+		lb3.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		JLabel lb4 = new JLabel("체결금액");
+		add(lb4);
+		lb4.setLocation(625, y);
+		lb4.setSize(100, 30);
+		lb4.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		// 거래내역 담는 라벨
+		// 시간담자
+		int timeSize = 130;
+		JLabel time1 = new JLabel(today1);
+		add(time1);
+		time1.setLocation(30, 125);
+		time1.setSize(timeSize, 30);
+		time1.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel time2 = new JLabel();
+		add(time2);
+		time2.setLocation(30, 200);
+		time2.setSize(timeSize, 30);
+		time2.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel time3 = new JLabel();
+		add(time3);
+		time3.setLocation(30, 275);
+		time3.setSize(timeSize, 30);
+		time3.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel time4 = new JLabel();
+		add(time4);
+		time4.setLocation(30, 350);
+		time4.setSize(timeSize, 30);
+		time4.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel time5 = new JLabel();
+		add(time5);
+		time5.setLocation(30, 425);
+		time5.setSize(timeSize, 30);
+		time5.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		// 구분 담기
+
+		JLabel dv1 = new JLabel();
+		add(dv1);
+		dv1.setLocation(210, 125);
+		dv1.setSize(50, 30);
+		dv1.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel dv2 = new JLabel();
+		add(dv2);
+		dv2.setLocation(210, 200);
+		dv2.setSize(50, 30);
+		dv2.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel dv3 = new JLabel();
+		add(dv3);
+		dv3.setLocation(210, 275);
+		dv3.setSize(50, 30);
+		dv3.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel dv4 = new JLabel();
+		add(dv4);
+		dv4.setLocation(210, 350);
+		dv4.setSize(50, 30);
+		dv4.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel dv5 = new JLabel("매수");
+		add(dv5);
+		dv5.setLocation(210, 425);
+		dv5.setSize(50, 30);
+		dv5.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		// 체결가격
+		int priceSize = 100;
+		JLabel price1 = new JLabel("30");
+		add(price1);
+		price1.setLocation(330, 125);
+		price1.setSize(priceSize, 30);
+		price1.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel price2 = new JLabel();
+		add(price2);
+		price2.setLocation(330, 200);
+		price2.setSize(priceSize, 30);
+		price2.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel price3 = new JLabel();
+		add(price3);
+		price3.setLocation(330, 275);
+		price3.setSize(priceSize, 30);
+		price3.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel price4 = new JLabel();
+		add(price4);
+		price4.setLocation(330, 350);
+		price4.setSize(priceSize, 30);
+		price4.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel price5 = new JLabel();
+		add(price5);
+		price5.setLocation(330, 425);
+		price5.setSize(priceSize, 30);
+		price5.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		// 체결수량
+		int amountSize = 100;
+		JLabel amount1 = new JLabel("300000");
+		add(amount1);
+		amount1.setLocation(480, 125);
+		amount1.setSize(amountSize, 30);
+		amount1.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel amount2 = new JLabel();
+		add(amount2);
+		amount2.setLocation(480, 200);
+		amount2.setSize(amountSize, 30);
+		amount2.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel amount3 = new JLabel();
+		add(amount3);
+		amount3.setLocation(480, 275);
+		amount3.setSize(amountSize, 30);
+		amount3.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel amount4 = new JLabel();
+		add(amount4);
+		amount4.setLocation(480, 350);
+		amount4.setSize(amountSize, 30);
+		amount4.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel amount5 = new JLabel();
+		add(amount5);
+		amount5.setLocation(480, 425);
+		amount5.setSize(amountSize, 30);
+		amount5.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		// 체결금액
+		int pcSize = 100;
+		JLabel pc1 = new JLabel("1000000000");
+		add(pc1);
+		pc1.setLocation(625, 125);
+		pc1.setSize(pcSize, 30);
+		pc1.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel pc2 = new JLabel();
+		add(pc2);
+		pc2.setLocation(625, 200);
+		pc2.setSize(pcSize, 30);
+		pc2.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel pc3 = new JLabel();
+		add(pc3);
+		pc3.setLocation(625, 275);
+		pc3.setSize(pcSize, 30);
+		pc3.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel pc4 = new JLabel();
+		add(pc4);
+		pc4.setLocation(625, 350);
+		pc4.setSize(pcSize, 30);
+		pc4.setFont(new Font("Gothic", Font.BOLD, 15));
+		JLabel pc5 = new JLabel();
+		add(pc5);
+		pc5.setLocation(625, 425);
+		pc5.setSize(pcSize, 30);
+		pc5.setFont(new Font("Gothic", Font.BOLD, 15));
+
+		JButton jb1 = new JButton("메인으로");
+		add(jb1);
+		jb1.setSize(70, 30);
+		jb1.setLocation(300, 500);
+		jb1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gf.getCardLayout().show(gf.getContentPane(),"메인");
+			}
+		});
+
+		JButton jb2 = new JButton("종료");
+		add(jb2);
+		jb2.setSize(70, 30);
+		jb2.setLocation(400, 500);
+		jb2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "종료합니다.");
+				System.exit(0);
+
+			}
+		});
+
+		// 크기
+		setSize(800, 600);
+		// 보이기
+		setVisible(true);
+
+		// 타이머
+
+	}
+
+}

@@ -1,0 +1,157 @@
+﻿package teamProject;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+public class Gza_sell extends JPanel {
+
+	Scanner sc;
+	int currentMoney;
+	int mybtc;
+	int btc;
+	int btcCurrentPrice;
+	int charge;
+	int result1;
+	int result2;
+	Date today = new Date();
+
+	public Gza_sell(Gza_Frame gf) {
+		sc = new Scanner(System.in);
+		currentMoney = 1000000;
+		mybtc = 20;
+		btcCurrentPrice = 50000;
+		btc = 5;
+		charge = (int) (btcCurrentPrice * btc * 0.05);
+		result2 = btcCurrentPrice * btc - charge;
+
+		SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat time = new SimpleDateFormat("hh:mm:ss a");
+
+		// ----------------------------------------------------
+
+		setBackground(Color.LIGHT_GRAY);
+		setSize(800, 600);
+		setLayout(null);
+	
+
+		int xL = 100;
+		int xT = 530;
+
+		JLabel lb0 = new JLabel("코인종류");
+		add(lb0);
+		lb0.setLocation(xL, 10);
+		lb0.setSize(100, 30);
+		lb0.setFont(new Font("Gothic", Font.BOLD, 23));
+
+		String[] coin = { "btc", "btc1" };
+		JComboBox jc = new JComboBox(coin);
+		JScrollPane s = new JScrollPane(jc);
+		add(s);
+		s.setLocation(xT, 10);
+		s.setSize(70, 35);
+
+		JLabel lb1 = new JLabel("판매가능");
+		add(lb1);
+		lb1.setLocation(xL, 50);
+		lb1.setSize(100, 100);
+		lb1.setFont(new Font("Gothic", Font.BOLD, 23));
+		JLabel lb = new JLabel(Integer.toString(mybtc));
+		add(lb);
+		lb.setLocation(xT, 50);
+		lb.setSize(100, 100);
+
+		JLabel lb2 = new JLabel("매도수량");
+		add(lb2);
+		lb2.setLocation(xL, 130);
+		lb2.setSize(100, 100);
+		lb2.setFont(new Font("Gothic", Font.BOLD, 23));
+		// JTextField jf1 = new JTextField();
+		// c.add(jf1); //btc입력
+		// jf1.setSize(70,30);
+		// jf1.setLocation(xT,163);
+
+		// 위에 주석 풀어야함 / 아래는 테스트용
+
+		JLabel lb_e = new JLabel(Integer.toString(btc));
+		add(lb_e);
+		lb_e.setSize(70, 30);
+		lb_e.setLocation(xT, 163);
+
+		JLabel lb3 = new JLabel("매도가격");
+		add(lb3);
+		lb3.setLocation(xL, 210);
+		lb3.setSize(100, 100);
+		lb3.setFont(new Font("Gothic", Font.BOLD, 23));
+		JLabel jf2 = new JLabel(Integer.toString(btcCurrentPrice));
+		add(jf2);// trade.btcCurrentPrice
+		jf2.setSize(50, 50);
+		jf2.setLocation(xT, 233);
+
+		JLabel lb4 = new JLabel("수수료");
+		add(lb4);
+		lb4.setLocation(xL, 290);
+		lb4.setSize(100, 100);
+		lb4.setFont(new Font("Gothic", Font.BOLD, 23));
+		JLabel jf3 = new JLabel(Integer.toString(charge));// trade.charge
+		add(jf3);
+		jf3.setSize(50, 50);
+		jf3.setLocation(xT, 313);
+
+		JLabel lb5 = new JLabel("판매총액");
+		add(lb5);
+		lb5.setLocation(xL, 400);
+		lb5.setSize(100, 100);
+		lb5.setFont(new Font("Gothic", Font.BOLD, 23));
+		JLabel jf4 = new JLabel(Integer.toString(result2));// trade.result
+		add(jf4);
+		jf4.setSize(50, 50);
+		jf4.setLocation(xT, 423);
+
+		JLabel lb10 = new JLabel("------------------------------------------------------------");
+		add(lb10);
+		lb10.setSize(800, 30);
+		lb10.setLocation(xL, 370);
+		lb10.setFont(new Font("Gothic", Font.BOLD, 30));
+
+		JButton jb1 = new JButton("확인");
+		add(jb1);
+		jb1.setSize(70, 30);
+		jb1.setLocation(300, 500);
+		jb1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mybtc -= btc;
+				currentMoney += result2;
+				System.out.println(date.format(today) + "  " + time.format(today));
+				System.out.println("내돈 : " + currentMoney + " /  코인 : " + mybtc);
+				JOptionPane.showMessageDialog(null, "판매에 성공하였습니다.");
+				gf.getCardLayout().show(gf.getContentPane(),"메인");
+			}
+		});
+
+		JButton jb2 = new JButton("취소");
+		add(jb2);
+		jb2.setSize(70, 30);
+		jb2.setLocation(400, 500);
+
+		// 크기
+		setSize(800, 600);
+		// 보이기
+		setVisible(true);
+	}
+
+}

@@ -1,0 +1,147 @@
+﻿package teamProject;
+
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.time.Hour;
+import org.jfree.data.time.Minute;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
+
+import teamProject.JPanel02.MyActionListener;
+
+public class Gza_MainPage2 extends JPanel{        // 2번째 패널
+	    Vo vo = new Vo();
+	    static boolean main_LoginDefault;
+		int user_capital = 0;//db
+	    String user_id = "xxx";//db
+	    
+	    private JButton jButton1;
+	    private JScrollPane jScrollPane1;
+	    private JTextArea jTextArea1;
+	    private JPanelTest gf;
+	    
+	    public Gza_MainPage2(Gza_Frame gf){
+	        main_LoginDefault = false;
+	        setLayout(null);
+	        
+	        TimeSeries series = new TimeSeries("Coin 가격", Minute.class);
+	        Hour hour = new Hour();
+	        series.add(new Minute(1, hour), 10.2);
+	        series.add(new Minute(3, hour), 17.3);
+	        series.add(new Minute(9, hour), 14.6);
+	        series.add(new Minute(11, hour), 11.9);
+	        series.add(new Minute(15, hour), 13.5);
+	        series.add(new Minute(19, hour), 10.9);
+	        final TimeSeriesCollection dataset = new TimeSeriesCollection(series);
+	        
+	        final JFreeChart chart = ChartFactory.createTimeSeriesChart(
+	            "Coin 시세 Chart",
+	            "시간순", 
+	            "단가",
+	            dataset,
+	            true,
+	            true,
+	            false
+	        );
+	        
+	        setLayout(null);
+	        //chartPanel에 chart를 담음.
+	        ChartPanel cp = new ChartPanel(chart);
+	        cp.setPreferredSize(new java.awt.Dimension(500, 460));
+	        JPanel westP = new JPanel();
+	        westP.setSize(550,480);
+	        westP.setLocation(5, 50);
+	        //west에 cp 넣기
+	        westP.add(cp);
+	        add(westP,BorderLayout.WEST);
+	        
+	        //North 구성
+	        JButton joinB = new JButton("회원가입");
+	        joinB.setSize(100, 30);
+	        joinB.setLocation(550, 10);
+	        JButton loginB = new JButton("로그아웃");
+	        loginB.setSize(100, 30);
+	        loginB.setLocation(660, 10);
+	        loginB.addActionListener(new ActionListener() {
+		      	  
+	        	@Override
+			public void actionPerformed(ActionEvent e) {
+				gf.getCardLayout().show(gf.getContentPane(),"비로그인메인"); 
+			}
+        });
+	        
+	        JLabel mainL = new JLabel(user_id + "님 환영합니다.");
+	        mainL.setSize(150, 30);
+	        mainL.setLocation(20, 10);
+	        mainL.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
+	        
+	        JButton myPageB = new JButton("마이페이지");
+	        myPageB.setSize(100, 30);
+	        myPageB.setLocation(200, 10);
+	        myPageB.addActionListener(new ActionListener() {
+	      	  
+	        	@Override
+			public void actionPerformed(ActionEvent e) {
+				gf.getCardLayout().show(gf.getContentPane(),"마이페이지"); 
+			}
+        });
+	        
+	        JLabel mainL1 = new JLabel("자본금 = " + user_capital + " KRW " );
+	        mainL1.setSize(150, 30);
+	        mainL1.setLocation(350, 10);
+	        mainL1.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
+	        
+	        add(mainL);
+	        add(myPageB);
+	        add(mainL1);
+	        add(joinB);
+	        add(loginB);
+
+	        //south 구성
+	        JButton refreshB = new JButton("그래프 새로고침");
+	        refreshB.setSize(150, 30);
+	        refreshB.setLocation(200,530);
+	        add(refreshB);
+	        
+	        //east 구성
+	        JButton coinSellB = new JButton("코인 매도");
+	        coinSellB.setSize(150, 90);
+	        coinSellB.setLocation(580, 80);
+	        coinSellB.addActionListener(new ActionListener() {
+		      	  
+	        	@Override
+			public void actionPerformed(ActionEvent e) {
+				gf.getCardLayout().show(gf.getContentPane(),"매도"); 
+			}
+        });
+	        JButton coinBuyB = new JButton("코인 매수");
+	        coinBuyB.setSize(150, 90);
+	        coinBuyB.setLocation(580, 190);
+	        coinBuyB.addActionListener(new ActionListener() {
+		      	  
+	        	@Override
+			public void actionPerformed(ActionEvent e) {
+				gf.getCardLayout().show(gf.getContentPane(),"매수"); 
+			}
+        });
+
+	        add(coinBuyB);
+	        add(coinSellB);
+
+	    }
+	 
+	}
+
+
